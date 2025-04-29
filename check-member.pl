@@ -1,0 +1,3 @@
+mem_chk(X, [X|_]).
+mem_chk(X, [_|T]):-
+    mem_chk(X, T).

@@ -1,0 +1,11 @@
+squares(N1, N2):-
+    N1 =< N2,
+    Square is N1*N1,
+    write('Square of'), write(N1), write(':'), write(Square), nl,
+    Next is N1+1,
+    squares(Next, N2).
+squares(_,_).
+calculate_squares:-
+    write('Enter starting number: '), read(N1),
+    write('Enter ending number: '), read(N2),
+    squares(N1, N2).

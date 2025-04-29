@@ -1,0 +1,4 @@
+list_rev([], []).
+list_rev([H|T], R):-
+    list_rev(T, RevT),
+    concat(RevT, [H], R).left_shift

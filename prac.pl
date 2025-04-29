@@ -52,10 +52,10 @@ right_shift(L, R):-
     init(L, Init),
     R = [Last | Init].
 
+%WaterJug
 waterjug(X, Y):- X>4, Y<3, write('4L jug is overflowed'),nl.
 waterjug(X, Y):- X<4, Y>3, write('3L jug is ovverflowed'), nl.
 waterjug(X, Y):- X>4, Y>3, write('Both jugs are overflowed'),nl.
-
 waterjug(X, Y):-
    (X=:=0, Y=:=0, nl, write('4L=0 & 3L=3 (Action: Pour water in 3L jug)'), YY is 3, waterjug(X, YY));
     (X=:=0, Y=:=3, nl, write('4L=3 & 3L=0 (Action: pour water from 3L jug to 4L jug)'), XX is 3, YY is 0, waterjug(XX, YY));
@@ -72,7 +72,7 @@ waterjug(X, Y):-
     (X=:=4, Y=:=1, nl, write('4L=2 & 3L=3 (Action: Pour watr from 4L jug to 3L jug untill it is filled)'), XX is X-2, YY is Y+2, waterjug(XX, YY));
     (X=:=2, Y=:=3, nl, write('4L=2 & 2L=0 (Action: Empty 3L jug)'), YY is 0, waterjug(X, YY)).
 
-
+%GCD-LCM
 gcd(X,0,X):-!.
 gcd(X, Y, R):-
     Y>0,
@@ -83,7 +83,7 @@ lcm(X, Y, R):-
     gcd(X, Y, G),
     R is (X*Y)//G.
 
-
+%Missionary-Cannibal
 start([3,3,left,0,0]).
 goal([0,0,right,3,3]).
 legal(CL, ML, CR, MR):-
@@ -153,3 +153,14 @@ find:-
     start(Start),
     goal(Goal),
     path(Start,Goal,[Start],[]).
+
+%Tower of Hanoi
+move(1, Source, Destination, _):-
+    write('Move disk from '), write(Source), write(' to '), write(Destination),nl.
+
+move(N,Source, Destination,Aux):-
+    N>1,
+    M is N-1,
+    move(M, Source, Aux, Destination),
+    move(1,Source,Destination,_),
+    move(M,Aux, Destination, Source).

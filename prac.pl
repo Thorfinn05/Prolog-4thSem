@@ -164,3 +164,23 @@ move(N,Source, Destination,Aux):-
     move(M, Source, Aux, Destination),
     move(1,Source,Destination,_),
     move(M,Aux, Destination, Source).
+
+%DFS
+graph(a,b).
+graph(a,c).
+graph(b,d).
+graph(b,e).
+graph(c,f).
+graph(c,g).
+goal(f).
+goal(g).
+member1(X,[X|_]).
+member1(X,[_|T]):- member1(X, T).
+solve(Node,Sol):-
+    dfs([],Node,Sol).  %Solving the predicate
+dfs(Path,Node,[Node|Path]):-
+    goal(Node).  %Goal state is reached
+dfs(Path,Node,Sol):-
+    graph(Node,Node1),  %Checking a graph of Node and Node1
+    not(member1(Node,Path)),  %No recycling so checking if Node exists in Path or not
+    dfs([Node|Path],Node1,Sol).  %Recursively doing for Node1 and so on

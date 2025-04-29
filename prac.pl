@@ -184,3 +184,23 @@ dfs(Path,Node,Sol):-
     graph(Node,Node1),  %Checking a graph of Node and Node1
     not(member1(Node,Path)),  %No recycling so checking if Node exists in Path or not
     dfs([Node|Path],Node1,Sol).  %Recursively doing for Node1 and so on
+
+%Monkey-Banana
+%state(MonkeyPos, MonkeySts, BoxPos, Banana).
+%Grasping the banana
+act(state(middle, onbox, middle, hasnot),grasp,state(middle, onbox, middle,has)).
+%Climbs the box
+act(state(P,onfloor,P,H),climb,state(P,onbox,P,H)).
+%Pushes the box
+act(state(P1,onfloor,P1,H),push(P1,P2),state(P2,onfloor,P2,H)).
+%Walks
+act(state(P1,onfloor,B,H),walk(P1,P2),state(P2,onfloor,B,H)).
+%base case
+canget(state(_,_,_,has)).
+%recursive function
+canget(State1):-
+    act(State1, _Action, State2),
+    canget(State2).
+%Starting
+go:-
+    canget(state(atdoor, onfloor, atwindow, hasnot)).

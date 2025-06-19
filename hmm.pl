@@ -151,10 +151,9 @@ waterjug(X, Y):-
     (X=:=0, Y=:=0, nl, write('4L:0, 3L:3 (Action: Fill 3L jug)'), YY is 3, waterjug(X, YY));
     (X=:=0, Y=:=3, nl, write('4L:3 & 3L:0 (Action: Pour water from 3L jug to 4L jug)'), XX is 3, YY is 0, waterjug(XX, YY));
     (X=:=3, Y=:=0, nl, write('4L:3 & 3L:3 (Action: Fill the 3L jug)'), YY is 3, waterjug(X, YY));
-    (X=:=3, Y=:=3, nl, write('4L:4 & 3L:2 (Action: Pour water from 3L to 4L untill 4L is filled)'), XX is X+1, YY is Y-1, waterjug(XX, YY));
+    (X=:=3, Y=:=3, nl, write('4L:4 & 3L:2 (Action: Pour water from 3L to 4L untill 4L is filled)'), XX is X+1, YY is Y-1, waterjug(XX, YY)); 
     (X=:=4, Y=:=2, nl, write('4L:0 & 3L:2 (Action: Empty the 4L jug)'), XX is 0, waterjug(XX, Y));
     (X=:=0, Y=:=2, nl, write('4L:2 & 3L:0 (Action: Pour water from 3L jug to 4L jug)'), XX is Y, YY is X, waterjug(XX, YY));
-
 
 
     (X=:=0, Y=:=0, nl, write('4L:4, 3L:0 (Action: Fill 4L jug)'), XX is 4, waterjug(XX, Y));

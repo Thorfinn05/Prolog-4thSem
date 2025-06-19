@@ -165,14 +165,14 @@ waterjug(X, Y):-
     (X=:=4, Y=:=1, nl, write('4L:2 & 3L:3 (Action: Pour water from 4L to 3L)'), XX is X-2, YY is Y+2, waterjug(XX, YY));
     (X=:=2, Y=:=3, nl, write('4L:2 & 3L:0 (Action: Empty the 3L jug)'), YY is 0, waterjug(X, YY)).
 
-move1(1, From, To, _):-
-    write("Move from "), write(From), write(" to "), write(To), write("."), nl.
-move1(N, From, To, Aux):-
-    N>1,
-    M is N-1,
-    move1(M, From, Aux, To),
-    move1(1, From, To, _),
-    move1(M, Aux, To, From).
+% move1(1, From, To, _):-
+%     write("Move from "), write(From), write(" to "), write(To), write("."), nl.
+% move1(N, From, To, Aux):-
+%     N>1,
+%     M is N-1,
+%     move1(M, From, Aux, To),
+%     move1(1, From, To, _),
+%     move1(M, Aux, To, From).
 
 %Monkey-banana
 act(state(middle, onfloor, middle, hasnot), grasp, state(middle, onbox, middle, has)).

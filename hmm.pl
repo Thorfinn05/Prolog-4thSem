@@ -147,7 +147,7 @@ waterjug(X,Y):- X=<4, Y>3, write('3L jug is overloaded'), nl.
 waterjug(X,Y):- X>4, Y>3, write('Both jugs are overloaded'), nl.
 
 waterjug(X, Y):-
-    (   X=:=2, Y=:=0, nl, write('4L:2, 3L:0 (Action: Goal state reached)'));
+    (X=:=2, Y=:=0, nl, write('4L:2, 3L:0 (Action: Goal state reached)'));
     (X=:=0, Y=:=0, nl, write('4L:0, 3L:3 (Action: Fill 3L jug)'), YY is 3, waterjug(X, YY));
     (   X=:=0, Y=:=3, nl, write('4L:3 & 3L:0 (Action: Pour water from 3L jug to 4L jug)'), XX is 3, YY is 0, waterjug(XX, YY));
     (   X=:=3, Y=:=0, nl, write('4L:3 & 3L:3 (Action: Fill the 3L jug)'), YY is 3, waterjug(X, YY));

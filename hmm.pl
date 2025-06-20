@@ -142,6 +142,27 @@ bfs([[Node|Path]|RestPaths], Solution):-
     bfs(UpdatedQueue, Solution).
 
 %All Possible Path from single node
+edge(1,2).
+edge(1,6).
+edge(2,3).
+edge(2,5).
+edge(2,6).
+edge(3,4).
+edge(3,5).
+edge(4,5).
+edge(5,6).
+connected(X,Y):-edge(X,Y).
+connected(X,Y):-edge(Y,X).
+path(A, B, Path):-
+    traverse(A, B, [A], RevPath),
+    reverse(RevPath, Path).
+traverse(A, B, Visited, [B|Visited]):-
+    connected(A, B).
+traverse(A, B, Visited, Path):-
+    connected(A, C),
+    C\==B,
+    not(member(C, Visited)),
+    traverse(C, B, [C|Visited], Path).
 
 
 %Waterjug

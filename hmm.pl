@@ -141,6 +141,9 @@ bfs([[Node|Path]|RestPaths], Solution):-
     append(RestPaths, newPaths, UpdatedQueue),
     bfs(UpdatedQueue, Solution).
 
+%All Possible Path from single node
+
+
 %Waterjug
 waterjug(X,Y):- X>4, Y=<3, write('4L jug is overloaded'),nl.
 waterjug(X,Y):- X=<4, Y>3, write('3L jug is overloaded'), nl.
